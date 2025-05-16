@@ -8,6 +8,7 @@ import { Trainer } from '../Trainer';
 })
 export class TrainerDetailComponent implements OnInit {
   @Input() trainerDetail!: Trainer;
+  idTrainer!:number
   constructor() {}
 
   ngOnInit() {}
