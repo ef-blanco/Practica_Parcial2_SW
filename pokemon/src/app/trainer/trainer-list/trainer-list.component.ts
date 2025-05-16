@@ -11,7 +11,7 @@ import { TrainerService } from '../trainer.service';
 export class TrainerListComponent implements OnInit {
   trainers: Array<Trainer> = [];
   selected: Boolean = false;
-  selectedTrainer!: Trainer;
+  selectedTrainer!: number;
   constructor(private trainerService: TrainerService) {}
 
   getTrainersList(){
@@ -26,6 +26,6 @@ export class TrainerListComponent implements OnInit {
 
   onSelected(trainer: Trainer) {
     this.selected = true;
-    this.selectedTrainer = trainer;
+    this.selectedTrainer = trainer.id;
   }
 }

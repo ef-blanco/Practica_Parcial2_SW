@@ -10,11 +10,16 @@ import { environment } from '../../environments/environment.development';
 })
 export class TrainerService {
 
-  private apiUrl = environment.baseUrl + "trainers.json";
+  private apiUrl = environment.baseUrl;
 constructor(private http:HttpClient) { }
 
 getTrainers():Observable<Trainer[]>
 {
-  return this.http.get<Trainer[]>(this.apiUrl);
+  return this.http.get<Trainer[]>(this.apiUrl+"trainers.json");
+}
+
+getTrainer(id:number):Observable<Trainer>
+{
+  return this.http.get<Trainer>(this.apiUrl+`/${id}/trainers.json`);
 }
 }
