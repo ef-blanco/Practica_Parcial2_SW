@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Trainer } from '../Trainer';
 import { dataTrainers } from '../dataTrainers';
 import { TrainerService } from '../trainer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trainer-list',
@@ -10,9 +11,8 @@ import { TrainerService } from '../trainer.service';
 })
 export class TrainerListComponent implements OnInit {
   trainers: Array<Trainer> = [];
-  selected: Boolean = false;
-  selectedTrainer!: number;
-  constructor(private trainerService: TrainerService) {}
+  selectedTrainer!: Trainer;
+  constructor(private trainerService: TrainerService, private router:Router) {}
 
   getTrainersList(){
     this.trainerService.getTrainers().subscribe(trainers=>{
@@ -25,7 +25,8 @@ export class TrainerListComponent implements OnInit {
   }
 
   onSelected(trainer: Trainer) {
-    this.selected = true;
-    this.selectedTrainer = trainer.id;
+    this.selectedTrainer = trainer;
+    localStorage.setItem("trainer_id",trainer.id.toString())
+    this.router.navigate([`/trainers/${trainer.id}`])
   }
 }

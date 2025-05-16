@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:"",
+    path:"trainers",
     loadChildren: () =>
-      import("./trainer/trainer.module").then((m)=>m.TrainerModule)
+      import("./trainer/trainer.module").then(m =>m.TrainerModule)
   }
 ];
 

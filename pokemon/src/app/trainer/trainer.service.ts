@@ -20,6 +20,6 @@ getTrainers():Observable<Trainer[]>
 
 getTrainer(id:number):Observable<Trainer>
 {
-  return this.http.get<Trainer>(this.apiUrl+`/${id}/trainers.json`);
+  return this.http.get<Trainer>(this.apiUrl+`${id}/trainers.json`);
 }
 }

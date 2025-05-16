@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Trainer } from '../Trainer';
+import { TrainerService } from '../trainer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trainer-detail',
@@ -9,7 +11,17 @@ import { Trainer } from '../Trainer';
 export class TrainerDetailComponent implements OnInit {
   @Input() trainerDetail!: Trainer;
   idTrainer!:number
-  constructor() {}
+  constructor(private trainerService:TrainerService, private router:Router) {}
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+    this.getTrainer(Number(localStorage.getItem("trainer_id")));
+  }
+
+  getTrainer(trainer_id:number)
+  {
+    this.trainerService.getTrainer(trainer_id).subscribe(trainer =>{
+      this.trainerDetail = trainer;
+    });
+  }
 }

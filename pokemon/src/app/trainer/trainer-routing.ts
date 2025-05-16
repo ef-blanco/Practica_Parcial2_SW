@@ -6,11 +6,11 @@ import { TrainerListComponent } from './trainer-list/trainer-list.component';
 
 const routes:Routes = [
     {
-        path:"/trainers",
+        path:"",
         component:TrainerListComponent
     },
     {
-        path:"trainers/:id",
+        path:":id",
         component:TrainerDetailComponent
     }
 ];
